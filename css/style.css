@@ -477,6 +477,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .results-bar__count strong { color: var(--ink); }
 .results-bar .select { width: auto; min-width: 220px; background-color: var(--surface); border-color: var(--line); }
 .filters-toggle { display: none; }
+.filters-backdrop { display: none; }
 .empty-state { text-align: center; padding: 80px 24px; background: var(--surface); border: 1px dashed var(--line); border-radius: var(--r-md); grid-column: 1 / -1; }
 .empty-state h3 { font-size: 22px; margin-bottom: 8px; }
 .empty-state p { color: var(--muted); margin-bottom: 20px; }
@@ -749,7 +750,7 @@ a.contact-card:hover { transform: translateY(-4px); }
   .filters { position: fixed; inset: auto 0 0 0; top: auto; z-index: 150; border-radius: var(--r-lg) var(--r-lg) 0 0; max-height: 85vh; overflow-y: auto; transform: translateY(105%); transition: transform 0.4s var(--ease); box-shadow: var(--shadow-lg); }
   .filters.is-open { transform: none; }
   .filters-toggle { display: inline-flex; }
-  .filters-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 140; opacity: 0; visibility: hidden; transition: opacity 0.3s, visibility 0.3s; }
+  .filters-backdrop { display: block; position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 140; opacity: 0; visibility: hidden; transition: opacity 0.3s, visibility 0.3s; }
   .filters-backdrop.is-open { opacity: 1; visibility: visible; }
   .vehicle__layout {
     grid-template-columns: 1fr;
