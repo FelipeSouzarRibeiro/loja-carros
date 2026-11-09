@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sobre | {loja}</title>
+  <meta name="description" content="Conheça nossa loja, história, estrutura e compromisso com a procedência de cada veículo.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@500;600;700;800&family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="sobre">
+  <div id="site-header"></div>
+
+  <section class="page-hero">
+    <div class="page-hero__bg"><img src="assets/img/sobre.jpg" alt=""></div>
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Você está em">
+        <a href="index.html">Início</a><span data-icon="chevronRight"></span><strong>Sobre</strong>
+      </nav>
+      <span class="eyebrow">Quem somos</span>
+      <h1>Sobre a <span data-config="nome"></span></h1>
+      <p data-config="slogan"></p>
+    </div>
+  </section>
+
+  <!-- História -->
+  <section class="section">
+    <div class="container">
+      <div class="about-intro">
+        <div class="reveal">
+          <span class="eyebrow">Nossa história</span>
+          <h2>Transparência em cada negociação</h2>
+          <p>Nascemos com o propósito de tornar a compra e a troca do seu carro simples, clara e segura. Trabalhamos tanto com modelos populares — ideais para o dia a dia e primeiro carro — quanto com sedãs e SUVs de padrão superior.</p>
+          <p>Cada veículo que entra no nosso pátio passa por vistoria cautelar completa, revisão mecânica e higienização detalhada antes de ir para a vitrine.</p>
+          <div style="margin-top:28px;display:flex;gap:12px;flex-wrap:wrap">
+            <a class="btn btn--dark" href="comprar.html">Ver estoque <span data-icon="arrowRight"></span></a>
+            <a class="btn btn--outline" href="contato.html">Visitar a loja</a>
+          </div>
+        </div>
+        <div class="about-intro__media reveal">
+          <img src="assets/img/sobre.jpg" alt="Interior da loja">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Números -->
+  <section>
+    <div class="container">
+      <div class="stats" id="statsGrid"></div>
+    </div>
+  </section>
+
+  <!-- Diferenciais -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-head reveal">
+        <div>
+          <span class="eyebrow">Compromisso</span>
+          <h2>O que você encontra aqui</h2>
+        </div>
+      </div>
+      <div class="values">
+        <article class="value-card reveal">
+          <div class="spec__icon"><span data-icon="shield"></span></div>
+          <h3>Laudo cautelar 100% aprovado</h3>
+          <p>Verificamos estrutura, pintura, histórico de leilão, sinistro e documentação de todos os veículos antes da compra.</p>
+        </article>
+        <article class="value-card reveal">
+          <div class="spec__icon"><span data-icon="award"></span></div>
+          <h3>Revisão e garantia</h3>
+          <p>Entregamos seu carro revisado, com garantia de motor e câmbio e suporte pós-venda direto com a nossa equipe.</p>
+        </article>
+        <article class="value-card reveal">
+          <div class="spec__icon"><span data-icon="handshake"></span></div>
+          <h3>Atendimento sem pressão</h3>
+          <p>Consultores preparados para comparar modelos, simular parcelas nos principais bancos e avaliar seu usado com justiça.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Como funciona -->
+  <section class="section dark-band">
+    <div class="container">
+      <div class="section-head reveal">
+        <div>
+          <span class="eyebrow" style="color:var(--accent)">Passo a passo</span>
+          <h2>Como funciona a compra</h2>
+        </div>
+      </div>
+      <div class="steps">
+        <div class="step reveal">
+          <h3>Escolha o veículo</h3>
+          <p>Navegue pelo estoque online, veja fotos reais e compare modelos populares e premium.</p>
+        </div>
+        <div class="step reveal">
+          <h3>Simule ou traga seu usado</h3>
+          <p>Fazemos a simulação de financiamento na hora e avaliamos seu carro atual como entrada.</p>
+        </div>
+        <div class="step reveal">
+          <h3>Saia de carro novo</h3>
+          <p>Cuidamos de toda a parte burocrática e entregamos o veículo revisado e pronto para rodar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Marcas -->
+  <div class="logo-strip" id="logoStrip"></div>
+
+  <!-- CTA -->
+  <section class="section">
+    <div class="container">
+      <div class="cta reveal">
+        <div>
+          <span class="eyebrow">Venha tomar um café</span>
+          <h2>Estamos prontos para receber você</h2>
+          <p data-config="endereco"></p>
+        </div>
+        <div class="contact-buttons" id="ctaButtons"></div>
+      </div>
+    </div>
+  </section>
+
+  <div id="site-footer"></div>
+
+  <script src="js/config.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const S = window.Site;
+      document.getElementById("statsGrid").innerHTML = (S.C.numeros || [])
+        .map((n) => `<div class="stat reveal"><strong>${S.esc(n.valor)}</strong><span>${S.esc(n.label)}</span></div>`)
+        .join("");
+      S.logoStrip(document.getElementById("logoStrip"));
+      document.getElementById("ctaButtons").innerHTML = S.contactButtons();
+      S.reveal();
+    });
+  </script>
+</body>
+</html>
+

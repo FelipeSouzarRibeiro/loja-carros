@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{loja} | Carros seminovos populares e premium</title>
+  <meta name="description" content="Carros seminovos populares e premium com procedência, financiamento facilitado e avaliação do seu usado na troca.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@500;600;700;800&family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="home">
+  <div id="site-header"></div>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="hero__bg"><img id="heroImg" src="assets/img/hero.jpg" alt="" fetchpriority="high"></div>
+    <div class="container">
+      <div class="hero__content">
+        <h1 data-config="home.titulo">Seu próximo<br>carro está aqui</h1>
+        <div class="hero__text">
+          <p data-config="home.subtitulo"></p>
+        </div>
+      </div>
+
+      <!-- Busca -->
+      <form class="search" id="searchForm" action="comprar.html">
+        <div class="search__tabs" role="tablist">
+          <button type="button" class="search__tab is-active" data-cat="">Todos</button>
+          <button type="button" class="search__tab" data-cat="popular">Populares</button>
+          <button type="button" class="search__tab" data-cat="premium">Premium</button>
+        </div>
+        <input type="hidden" name="categoria" id="searchCat">
+        <div class="search__bar">
+          <div class="search__field">
+            <label for="sMarca">Marca</label>
+            <select id="sMarca" name="marca"><option value="">Todas as marcas</option></select>
+          </div>
+          <div class="search__field">
+            <label for="sBusca">Modelo</label>
+            <input id="sBusca" name="busca" type="text" placeholder="Ex.: Corolla" autocomplete="off">
+          </div>
+          <div class="search__field">
+            <label for="sPreco">Preço até</label>
+            <select id="sPreco" name="preco">
+              <option value="">Qualquer valor</option>
+              <option value="80000">R$ 80 mil</option>
+              <option value="100000">R$ 100 mil</option>
+              <option value="150000">R$ 150 mil</option>
+              <option value="200000">R$ 200 mil</option>
+              <option value="300000">R$ 300 mil</option>
+            </select>
+          </div>
+          <div class="search__field">
+            <label for="sAno">Ano a partir de</label>
+            <select id="sAno" name="ano"><option value="">Qualquer ano</option></select>
+          </div>
+          <button class="search__submit" type="submit"><span data-icon="search"></span>Buscar</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============ MARCAS (carrossel) ============ -->
+  <section class="section brands-section">
+    <div class="container">
+      <div class="carousel" id="brandCarousel">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Nosso estoque</span>
+            <h2>Marcas disponíveis</h2>
+          </div>
+          <div class="carousel__nav">
+            <button class="icon-btn icon-btn--light" data-prev aria-label="Anterior"><span data-icon="chevronLeft"></span></button>
+            <button class="icon-btn icon-btn--light" data-next aria-label="Próximo"><span data-icon="chevronRight"></span></button>
+          </div>
+        </div>
+        <div class="carousel__track reveal"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DESTAQUES ============ -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-head reveal">
+        <div>
+          <span class="eyebrow">Selecionados</span>
+          <h2>Veículos em destaque</h2>
+        </div>
+        <a href="comprar.html" class="btn btn--primary btn--sm">Ver todos <span data-icon="arrowRight"></span></a>
+      </div>
+      <div class="cars-grid" id="featuredGrid"></div>
+    </div>
+  </section>
+
+  <!-- ============ BENEFÍCIOS (faixa escura) ============ -->
+  <section class="dark-band">
+    <div class="dark-band__grid">
+      <div class="benefits">
+        <div class="benefit benefit--intro reveal">
+          <span class="eyebrow">Por que comprar aqui</span>
+          <h2>Compra segura do início ao fim</h2>
+        </div>
+        <div class="benefit reveal">
+          <div class="benefit__icon"><span data-icon="shield"></span></div>
+          <h3>Procedência garantida</h3>
+          <p>Todos os veículos passam por vistoria cautelar e checagem completa de histórico.</p>
+        </div>
+        <div class="benefit reveal">
+          <div class="benefit__icon"><span data-icon="money"></span></div>
+          <h3>Financiamento facilitado</h3>
+          <p>Trabalhamos com os principais bancos para encontrar a menor parcela para você.</p>
+        </div>
+        <div class="benefit reveal">
+          <div class="benefit__icon"><span data-icon="swap"></span></div>
+          <h3>Seu usado na troca</h3>
+          <p>Avaliação justa e transparente do seu carro como parte do pagamento.</p>
+        </div>
+      </div>
+      <div class="dark-band__media">
+        <img id="darkBandImg" src="assets/img/cars/mercedes-c300-2022-2.jpg" alt="" loading="lazy">
+        <div class="highlight-box reveal">
+          <strong id="maxPrazo">60x</strong>
+          <span>para financiar com taxas a partir de <b id="taxaMin"></b> a.m.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CATEGORIAS ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head reveal">
+        <div>
+          <span class="eyebrow">Para todos os perfis</span>
+          <h2>Do popular ao premium</h2>
+        </div>
+      </div>
+      <div class="categories" id="categoryCards"></div>
+    </div>
+  </section>
+
+  <!-- ============ CTA CONTATO ============ -->
+  <section class="section section--tight" style="padding-top:0">
+    <div class="container">
+      <div class="cta reveal">
+        <div>
+          <span class="eyebrow">Atendimento</span>
+          <h2>Fale com um consultor agora</h2>
+          <p>Tire dúvidas, agende uma visita ou faça uma simulação de financiamento pelo canal que preferir.</p>
+        </div>
+        <div class="contact-buttons" id="ctaButtons"></div>
+      </div>
+    </div>
+  </section>
+
+  <div id="site-footer"></div>
+
+  <script src="js/config.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/home.js"></script>
+</body>
+</html>
+

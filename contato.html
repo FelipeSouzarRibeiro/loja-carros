@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contato | {loja}</title>
+  <meta name="description" content="Fale com nossa equipe pelo WhatsApp, Instagram ou e-mail e venha visitar a loja.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@500;600;700;800&family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="contato">
+  <div id="site-header"></div>
+
+  <section class="page-hero">
+    <div class="page-hero__bg"><img src="assets/img/hero.jpg" alt=""></div>
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Você está em">
+        <a href="index.html">Início</a><span data-icon="chevronRight"></span><strong>Contato</strong>
+      </nav>
+      <span class="eyebrow">Atendimento</span>
+      <h1>Fale conosco</h1>
+      <p>Escolha o canal de sua preferência ou envie uma mensagem: respondemos rápido.</p>
+    </div>
+  </section>
+
+  <!-- Cartões de contato direto -->
+  <div class="container">
+    <div class="contact-cards" id="contactCards"></div>
+  </div>
+
+  <!-- Formulário + mapa e horários -->
+  <section class="section">
+    <div class="container">
+      <div class="contact-layout">
+        <form class="card contact-form reveal" id="contactForm">
+          <span class="eyebrow">Mensagem rápida</span>
+          <h2>Envie sua dúvida ou proposta</h2>
+          <p>Preencha abaixo e escolha se prefere continuar pelo WhatsApp ou por e-mail.</p>
+          <div class="form-grid">
+            <div class="field">
+              <label for="cNome">Seu nome</label>
+              <input class="input" id="cNome" name="nome" type="text" required placeholder="Como podemos te chamar?">
+            </div>
+            <div class="field">
+              <label for="cTel">Telefone / WhatsApp</label>
+              <input class="input" id="cTel" name="telefone" type="tel" required placeholder="(11) 99999-9999">
+            </div>
+            <div class="field">
+              <label for="cEmail">E-mail (opcional)</label>
+              <input class="input" id="cEmail" name="email" type="email" placeholder="voce@email.com">
+            </div>
+            <div class="field">
+              <label for="cAssunto">Assunto</label>
+              <select class="select" id="cAssunto" name="assunto">
+                <option value="Quero comprar um veículo">Quero comprar um veículo</option>
+                <option value="Simulação de financiamento">Simulação de financiamento</option>
+                <option value="Avaliar meu usado na troca">Avaliar meu usado na troca</option>
+                <option value="Agendar visita / test-drive">Agendar visita / test-drive</option>
+                <option value="Outro assunto">Outro assunto</option>
+              </select>
+            </div>
+            <div class="field field--full">
+              <label for="cCarro">Veículo de interesse (opcional)</label>
+              <select class="select" id="cCarro" name="carro"><option value="">Nenhum em específico</option></select>
+            </div>
+            <div class="field field--full">
+              <label for="cMsg">Mensagem</label>
+              <textarea class="textarea" id="cMsg" name="mensagem" placeholder="Conte como podemos ajudar..."></textarea>
+            </div>
+          </div>
+          <div class="form-actions">
+            <button class="btn btn--whatsapp" type="submit" data-via="whatsapp"><span data-icon="whatsapp"></span> Enviar pelo WhatsApp</button>
+            <button class="btn btn--outline" type="submit" data-via="email"><span data-icon="mail"></span> Enviar por e-mail</button>
+          </div>
+        </form>
+
+        <div class="contact-side">
+          <div class="map reveal">
+            <iframe id="mapFrame" title="Localização da loja" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+          <div class="card hours reveal">
+            <h3><span data-icon="clock"></span> Horário de funcionamento</h3>
+            <ul id="hoursList"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="site-footer"></div>
+
+  <script src="js/config.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const S = window.Site;
+      const C = S.C;
+
+      /* Cartões de canais */
+      document.getElementById("contactCards").innerHTML = `
+        <a class="contact-card reveal" href="${S.waLink()}" target="_blank" rel="noopener">
+          <div class="spec__icon" style="background:var(--whatsapp)">${S.icon("whatsapp")}</div>
+          <div><small>WhatsApp</small><strong>${S.esc(C.whatsappExibicao)}</strong></div>
+          <span class="link-arrow">Conversar agora ${S.icon("arrowUpRight")}</span>
+        </a>
+        <a class="contact-card reveal" href="${S.igLink()}" target="_blank" rel="noopener">
+          <div class="spec__icon">${S.icon("instagram")}</div>
+          <div><small>Instagram</small><strong>@${S.esc(C.instagram)}</strong></div>
+          <span class="link-arrow">Seguir perfil ${S.icon("arrowUpRight")}</span>
+        </a>
+        <a class="contact-card reveal" href="${S.mailLink()}">
+          <div class="spec__icon">${S.icon("mail")}</div>
+          <div><small>E-mail</small><strong>${S.esc(C.email)}</strong></div>
+          <span class="link-arrow">Enviar e-mail ${S.icon("arrowUpRight")}</span>
+        </a>
+        <a class="contact-card reveal" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(C.endereco)}" target="_blank" rel="noopener">
+          <div class="spec__icon">${S.icon("mapPin")}</div>
+          <div><small>Endereço</small><strong>${S.esc(C.endereco)}</strong></div>
+          <span class="link-arrow">Traçar rota ${S.icon("arrowUpRight")}</span>
+        </a>`;
+
+      /* Lista de veículos no formulário */
+      const cCarro = document.getElementById("cCarro");
+      window.CARROS.forEach((c) =>
+        cCarro.insertAdjacentHTML("beforeend", `<option value="${S.esc(S.carName(c))} ${S.anos(c)} (${S.brl(c.preco)})">${S.esc(S.carName(c))} · ${S.anos(c)} · ${S.brl(c.preco)}</option>`)
+      );
+
+      /* Mapa e horários */
+      document.getElementById("mapFrame").src = `https://www.google.com/maps?q=${encodeURIComponent(C.endereco)}&output=embed`;
+      document.getElementById("hoursList").innerHTML = (C.horarios || [])
+        .map((h) => `<li><span>${S.esc(h.dias)}</span><span>${S.esc(h.horas)}</span></li>`)
+        .join("");
+
+      /* Envio do formulário */
+      let via = "whatsapp";
+      document.querySelectorAll("#contactForm [data-via]").forEach((b) => b.addEventListener("click", () => (via = b.dataset.via)));
+      document.getElementById("contactForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const d = Object.fromEntries(new FormData(e.target));
+        const texto = [
+          `Olá! Meu nome é ${d.nome}.`,
+          `Assunto: ${d.assunto}`,
+          d.carro ? `Veículo: ${d.carro}` : "",
+          d.telefone ? `Telefone: ${d.telefone}` : "",
+          d.email ? `E-mail: ${d.email}` : "",
+          d.mensagem ? `\n${d.mensagem}` : "",
+        ].filter(Boolean).join("\n");
+        if (via === "email") location.href = S.mailLink(`${d.assunto} - ${d.nome}`, texto);
+        else window.open(S.waLink(texto), "_blank", "noopener");
+      });
+
+      S.reveal();
+    });
+  </script>
+</body>
+</html>
+

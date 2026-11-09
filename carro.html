@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Veículo | {loja}</title>
+  <meta name="description" content="Fotos, preço, ficha técnica e condições do veículo.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@500;600;700;800&family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<!--
+  Página única de cada carro.
+  O conteúdo é montado automaticamente a partir de js/data.js
+  usando o parâmetro ?id= da URL (ex.: carro.html?id=toyota-corolla-2023).
+  Layout baseado na tela "Detalhes do Veículo" (Stitch).
+-->
+<body data-page="carro">
+  <div id="site-header"></div>
+
+  <main class="vehicle">
+    <div class="container" id="vehicleRoot"></div>
+  </main>
+
+  <!-- Modelos semelhantes -->
+  <section class="section section--alt" id="similarSection" hidden>
+    <div class="container">
+      <div class="carousel" id="similarCarousel">
+        <div class="section-head">
+          <div>
+            <h2 style="font-size:clamp(1.8rem,3.4vw,2.6rem)">Modelos semelhantes</h2>
+            <p>Opções revisadas na mesma faixa de preço.</p>
+          </div>
+          <div style="display:flex;align-items:center;gap:16px">
+            <a class="link-arrow" id="similarAll" href="comprar.html">Ver todos <span data-icon="arrowRight"></span></a>
+            <div class="carousel__nav">
+              <button class="icon-btn icon-btn--light" data-prev aria-label="Anterior"><span data-icon="chevronLeft"></span></button>
+              <button class="icon-btn icon-btn--light" data-next aria-label="Próximo"><span data-icon="chevronRight"></span></button>
+            </div>
+          </div>
+        </div>
+        <div class="carousel__track carousel__track--cars" id="similarTrack"></div>
+      </div>
+    </div>
+  </section>
+
+  <div id="site-footer"></div>
+
+  <!-- Barra fixa (mobile) -->
+  <div class="mobile-bar" id="mobileBar"></div>
+
+  <!-- Visualizador de fotos -->
+  <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Fotos do veículo">
+    <button class="lightbox__close" data-lb="close" aria-label="Fechar"><span data-icon="close"></span></button>
+    <button class="lightbox__arrow lightbox__arrow--prev" data-lb="prev" aria-label="Foto anterior"><span data-icon="chevronLeft"></span></button>
+    <img id="lightboxImg" src="" alt="">
+    <button class="lightbox__arrow lightbox__arrow--next" data-lb="next" aria-label="Próxima foto"><span data-icon="chevronRight"></span></button>
+    <div class="lightbox__counter" id="lightboxCounter"></div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/carro.js"></script>
+</body>
+</html>
+

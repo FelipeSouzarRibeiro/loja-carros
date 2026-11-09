@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comprar | {loja}</title>
+  <meta name="description" content="Confira nosso estoque de carros seminovos: populares e premium, com fotos, preços e condições.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@500;600;700;800&family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="comprar">
+  <div id="site-header"></div>
+
+  <section class="page-hero">
+    <div class="page-hero__bg"><img src="assets/img/sobre.jpg" alt=""></div>
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Você está em">
+        <a href="index.html">Início</a><span data-icon="chevronRight"></span><strong>Comprar</strong>
+      </nav>
+      <span class="eyebrow">Estoque completo</span>
+      <h1>Comprar</h1>
+      <p>Encontre o carro ideal entre modelos populares e premium, todos revisados e com procedência.</p>
+    </div>
+  </section>
+
+  <!-- Carrossel de marcas -->
+  <section class="section section--tight">
+    <div class="container">
+      <div class="carousel" id="brandCarousel">
+        <div class="section-head">
+          <div>
+            <h2 style="font-size:clamp(1.6rem,3vw,2.2rem)">Escolha pela marca</h2>
+          </div>
+          <div class="carousel__nav">
+            <button class="icon-btn icon-btn--light" data-prev aria-label="Anterior"><span data-icon="chevronLeft"></span></button>
+            <button class="icon-btn icon-btn--light" data-next aria-label="Próximo"><span data-icon="chevronRight"></span></button>
+          </div>
+        </div>
+        <div class="carousel__track"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Listagem -->
+  <section class="section" style="padding-top:0" id="estoque">
+    <div class="container">
+      <div class="shop">
+        <aside class="filters" id="filters" aria-label="Filtros">
+          <div class="filters__head">
+            <h3>Filtros</h3>
+            <button class="filters__clear" id="clearFilters" type="button">Limpar</button>
+          </div>
+          <div class="field">
+            <label for="fBusca">Buscar</label>
+            <input class="input" id="fBusca" type="search" placeholder="Modelo ou versão">
+          </div>
+          <div class="field">
+            <label>Categoria</label>
+            <div class="segmented" id="fCategoria">
+              <button type="button" data-value="" class="is-active">Todos</button>
+              <button type="button" data-value="popular">Populares</button>
+              <button type="button" data-value="premium">Premium</button>
+            </div>
+          </div>
+          <div class="field">
+            <label for="fMarca">Marca</label>
+            <select class="select" id="fMarca"><option value="">Todas</option></select>
+          </div>
+          <div class="field">
+            <label for="fPreco">Preço até</label>
+            <select class="select" id="fPreco">
+              <option value="">Qualquer valor</option>
+              <option value="80000">R$ 80 mil</option>
+              <option value="100000">R$ 100 mil</option>
+              <option value="150000">R$ 150 mil</option>
+              <option value="200000">R$ 200 mil</option>
+              <option value="300000">R$ 300 mil</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="fAno">Ano a partir de</label>
+            <select class="select" id="fAno"><option value="">Qualquer ano</option></select>
+          </div>
+          <div class="field">
+            <label for="fCarroceria">Carroceria</label>
+            <select class="select" id="fCarroceria"><option value="">Todas</option></select>
+          </div>
+          <div class="field">
+            <label for="fCambio">Câmbio</label>
+            <select class="select" id="fCambio">
+              <option value="">Todos</option>
+              <option value="Automático">Automático</option>
+              <option value="Manual">Manual</option>
+            </select>
+          </div>
+          <div class="field" style="margin-bottom:0">
+            <label for="fCombustivel">Combustível</label>
+            <select class="select" id="fCombustivel"><option value="">Todos</option></select>
+          </div>
+          <button class="btn btn--dark btn--block filters-toggle" id="applyFilters" type="button" style="margin-top:20px">Ver resultados</button>
+        </aside>
+        <div class="filters-backdrop" id="filtersBackdrop"></div>
+
+        <div>
+          <div class="results-bar">
+            <p class="results-bar__count" id="resultsCount"></p>
+            <div style="display:flex;gap:10px;flex:1;justify-content:flex-end">
+              <button class="btn btn--outline btn--sm filters-toggle" id="openFilters" type="button"><span data-icon="sliders"></span> Filtros</button>
+              <select class="select" id="fOrdem" aria-label="Ordenar">
+                <option value="relevancia">Mais relevantes</option>
+                <option value="menor">Menor preço</option>
+                <option value="maior">Maior preço</option>
+                <option value="novos">Mais novos</option>
+                <option value="km">Menor quilometragem</option>
+              </select>
+            </div>
+          </div>
+          <div class="cars-grid cars-grid--3" id="carsGrid"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight" style="padding-top:0">
+    <div class="container">
+      <div class="cta">
+        <div>
+          <span class="eyebrow">Não encontrou?</span>
+          <h2>Buscamos o carro certo para você</h2>
+          <p>Conte qual modelo procura e nossa equipe avisa assim que ele chegar ao estoque.</p>
+        </div>
+        <div class="contact-buttons" id="ctaButtons"></div>
+      </div>
+    </div>
+  </section>
+
+  <div id="site-footer"></div>
+
+  <script src="js/config.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/comprar.js"></script>
+</body>
+</html>
+

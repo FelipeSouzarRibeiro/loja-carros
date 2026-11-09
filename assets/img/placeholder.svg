@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
+  <rect width="1200" height="900" fill="#efeeeb"/>
+  <g fill="none" stroke="#c6c6ca" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" transform="translate(300 300)">
+    <path d="M40 220h-20a20 20 0 0 1-20-20v-60c0-18 10-30 28-34l92-20 76-70c12-11 26-16 42-16h200c18 0 33 7 44 20l58 66 52 10c22 4 38 22 38 44v60a20 20 0 0 1-20 20h-24"/>
+    <circle cx="120" cy="220" r="52"/>
+    <circle cx="470" cy="220" r="52"/>
+    <path d="M172 220h246"/>
+    <path d="M150 86h360"/>
+  </g>
+  <text x="600" y="640" text-anchor="middle" font-family="Space Grotesk, Arial, sans-serif" font-size="34" font-weight="600" fill="#8a8c90">Fotos em breve</text>
+</svg>
+
